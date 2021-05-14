@@ -13,6 +13,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.115/examples/js/controls/DragControls.js"></script>
+
     <script>
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -58,6 +60,14 @@
       light.position.set(10, 0, 25);
       scene.add(light);
 
+      const objects = [geometry];
+
+      const controls = new THREE.DragControls(
+        objects,
+        camera,
+        renderer.domElement
+      );
+
       const animate = function () {
         requestAnimationFrame(animate);
 
@@ -69,13 +79,13 @@
 
       animate();
 
-      this.tl = new TimelineMax({ paused: true });
-      this.tl.to(mesh.scale, 1, { x: 2, ease: Expo.easeOut });
-      this.tl.to(mesh.position, 0.5, { x: 2, ease: Expo.easeOut });
+      //   this.tl = new TimelineMax({ paused: true });
+      //   this.tl.to(mesh.scale, 1, { x: 2, ease: Expo.easeOut });
+      //   this.tl.to(mesh.position, 0.5, { x: 2, ease: Expo.easeOut });
 
-      document.body.addEventListener('click', () => {
-        this.tl.play();
-      });
+      //   document.body.addEventListener('click', () => {
+      //     this.tl.play();
+      //   });
       // renderer.render(scene, camera);
     </script>
   </body>

@@ -4,7 +4,7 @@ import { HashRouter as Router, Link, Switch, Route } from 'react-router-dom';
 const Nav = (props) => {
   return (
     <div id='navbar'>
-      <div id='logo'>SL BUILDER</div>
+      <div id='logo'>Madder Matter</div>
       <select
         value={props.location.pathname.slice(1)}
         onChange={(e) => {

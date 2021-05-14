@@ -15,12 +15,16 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "drag-controls": "^1.0.4",
     "express": "^4.17.1",
+    "i": "^0.3.6",
+    "npm": "^7.12.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "three": "^0.128.0"
+    "three": "^0.128.0",
+    "three-dragcontrols": "^0.88.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

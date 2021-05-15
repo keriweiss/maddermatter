@@ -45,12 +45,10 @@ const Cezanne = () => {
 
     //Ground
 
-    const groundGeo = new THREE.PlaneGeometry(300, 300);
+    const groundGeo = new THREE.PlaneGeometry(700, 300);
     const groundMat = new THREE.MeshLambertMaterial({ color: 0x009095 });
-    // groundMat.color.setHSL(0.095, 1, 0.75);
-
     const ground = new THREE.Mesh(groundGeo, groundMat);
-    ground.position.y = -33;
+    ground.position.y = -30;
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);

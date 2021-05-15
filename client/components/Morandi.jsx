@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import DragControls from 'three-dragcontrols';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import OrbitControls from 'three-orbitcontrols';
 
 const Morandi = (props) => {
   let mount = useRef(null);
@@ -241,15 +242,28 @@ const Morandi = (props) => {
     const dragControls = new DragControls(objects, camera, renderer.domElement);
 
     // dragControls.addEventListener('hoveron', function (event) {
-    //   event.object.material.emissive.set(0x00ff00);
+    //  event.object.material.emissive.set(0x00ff00);
     // });
 
     // dragControls.addEventListener('hoveroff', function (event) {
     //   event.object.material.emissive.set(0x000000);
     // });
 
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.enableZoom = false;
+
+    dragControls.addEventListener('dragstart', function () {
+      controls.enabled = false;
+    });
+    dragControls.addEventListener('dragend', function () {
+      controls.enabled = true;
+    });
+
     const animate = function () {
       requestAnimationFrame(animate);
+      controls.update();
       renderer.render(scene, camera);
     };
 

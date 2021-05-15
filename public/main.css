@@ -1,5 +1,4 @@
 * {
-  font-family: slfont;
   box-sizing: border-box;
 }
 
@@ -21,9 +20,15 @@ main {
   src: url('/public/LemonMilkRegular-X3XE2.otf');
 }
 
+@font-face {
+  font-family: blob;
+  src: url('/public/Blob.ttf');
+}
+
 /* NAV */
 
 #navbar {
+  font-family: slfont;
   width: 100%;
   background-color: rgb(150, 127, 127);
   display: flex;
@@ -50,4 +55,22 @@ main {
 #morandi-wrapper {
   background-color: rgb(219, 212, 212);
   height: 100vh;
+}
+
+/* HOME */
+
+#home {
+  font-family: blob;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homeLogo {
+  font-size: 250px;
+  text-align: center;
+}
+
+#directions {
+  text-align: center;
 }

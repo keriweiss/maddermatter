@@ -7,6 +7,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import Cezanne from './Cezanne';
+import Home from './Home';
 import Morandi from './Morandi';
 import Nav from './Nav';
 
@@ -21,6 +22,7 @@ class App extends Component {
       <Router>
         <NavWithRouter />
         <Switch>
+          <Route exact path='/' component={Home} />
           <Route exact path='/morandi' component={Morandi} />
           <Route exact path='/cezanne' component={Cezanne} />
         </Switch>

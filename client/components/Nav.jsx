@@ -14,7 +14,6 @@ const Nav = (props) => {
         <option value='artists'>ARTISTS</option>
         <option value='morandi'>Morandi</option>
         <option value='cezanne'>Cezanne</option>
-        <option value='kusama'>Kusama</option>
       </select>
       <Link to='/'>HOME</Link>
     </div>

@@ -1,0 +1,17 @@
+newmtl lemon_123_Mat
+Pr 0.473
+Ni 0.694
+Ka 0 0 0
+Pm 0
+d 1.0
+
+Kd 0 0 0
+adobe_map_normal lemon_123/lemon_123_normal.png
+map_Kd lemon_123/lemon_123_baseColor.png
+Tr 0
+illum 7
+Ks 1 1 1
+adobe_interior_color 1.0 1.0 1.0
+adobe_density 0
+Ns 16
+adobe_translucence 0

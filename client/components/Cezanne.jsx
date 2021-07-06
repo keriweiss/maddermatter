@@ -22,7 +22,7 @@ const Cezanne = () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.shadowMap.enabled = true;
-    renderer.setClearColor('#2d4542');
+    renderer.setClearColor('#a9c2c2');
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.sortObjects = false;
     mount.appendChild(renderer.domElement);
@@ -130,7 +130,6 @@ const Cezanne = () => {
           pear4 = child;
 
           pear4.rotation.x = Math.PI / 2 + 0.5;
-          // pear4.rotation.y = -Math.PI / 2 + 0.5;
           pear4.rotation.z = -Math.PI / 2 + 0.5;
           pear4.scale.set(0.2, 0.2, 0.2);
           pear4.position.set(20, 20, 20);
@@ -139,6 +138,35 @@ const Cezanne = () => {
       });
       ground.add(pear4);
       objects.push(pear4);
+
+      const newPear = pear4.clone();
+      newPear.rotation.x = Math.PI / 2 + 0.8;
+      newPear.rotation.z = Math.PI / 2 + 0.3;
+      newPear.scale.set(0.2, 0.2, 0.2);
+      newPear.position.set(80, 0, 28);
+      newPear.castShadow = true;
+
+      ground.add(newPear);
+      objects.push(newPear);
+    });
+
+    const pear5Loader = new OBJLoader();
+    pear5Loader.load('public/models/pear1/pear1.obj', (pear5) => {
+      pear5.traverse((child) => {
+        if (child.isMesh) child.material.map = pearTexture;
+        if (child instanceof THREE.Mesh) {
+          pear5 = child;
+
+          pear5.rotation.x = Math.PI / 2 - 0.5;
+          // pear4.rotation.y = -Math.PI / 2 + 0.5;
+          pear5.rotation.z = -Math.PI / 2 - 0.8;
+          pear5.scale.set(0.2, 0.2, 0.2);
+          pear5.position.set(25, 15, 17);
+          pear5.castShadow = true;
+        }
+      });
+      ground.add(pear5);
+      objects.push(pear5);
     });
 
     const pear2TextureLoader = new THREE.TextureLoader();
@@ -160,6 +188,16 @@ const Cezanne = () => {
       });
       ground.add(pear2);
       objects.push(pear2);
+
+      const pear6 = pear2.clone();
+      pear6.rotation.x = Math.PI / 2 + 0.5;
+      pear6.rotation.z = Math.PI / 2 - 0.8;
+      pear6.scale.set(0.2, 0.2, 0.2);
+      pear6.position.set(-40, -15, 17);
+      pear6.castShadow = true;
+
+      ground.add(pear6);
+      objects.push(pear6);
     });
 
     const pear3Loader = new OBJLoader();
@@ -168,8 +206,8 @@ const Cezanne = () => {
         if (child.isMesh) child.material.map = pear2Texture;
         if (child instanceof THREE.Mesh) {
           pear3 = child;
-
           pear3.rotation.x = Math.PI / 2 - 0.8;
+
           pear3.scale.set(0.2, 0.2, 0.2);
           pear3.position.set(60, 40, 0);
           pear3.castShadow = true;
@@ -204,7 +242,7 @@ const Cezanne = () => {
 
     //ADD SKULL
     const skullTextureLoader = new THREE.TextureLoader();
-    const skullTexture = vaseTextureLoader.load(
+    const skullTexture = skullTextureLoader.load(
       'public/models/skull/skull.jpg'
     );
     const skullLoader = new OBJLoader();
@@ -233,10 +271,6 @@ const Cezanne = () => {
     });
 
     // ADD PLATE
-    // const plateTextureLoader = new THREE.TextureLoader();
-    // const plateTexture = plateTextureLoader.load(
-    //   'public/models/skull/skull.jpg'
-    // );
     const mtlLoader = new MTLLoader();
     mtlLoader.load('public/models/dish/dish.mtl', (mtl) => {
       mtl.preload();
@@ -260,6 +294,53 @@ const Cezanne = () => {
         objects.push(plate);
       });
     });
+
+    //ADD LEMON
+    const lemonTextureLoader = new THREE.TextureLoader();
+    const lemonTexture = lemonTextureLoader.load(
+      'public/models/lemon/lemon_123/lemon_123_baseColor.png'
+    );
+
+    const lemonLoader = new OBJLoader();
+    lemonLoader.load('public/models/lemon/lemon_123.obj', (lemon) => {
+      lemon.traverse((child) => {
+        if (child.isMesh) child.material.map = lemonTexture;
+        if (child instanceof THREE.Mesh) {
+          lemon = child;
+          lemon.rotation.x = Math.PI / 2;
+          lemon.scale.set(3.5, 3.5, 3.5);
+          lemon.position.set(-90, -75, 0);
+          lemon.castShadow = true;
+          lemon.receiveShadow = true;
+        }
+      });
+      ground.add(lemon);
+      objects.push(lemon);
+    });
+
+    // ADD CLOTH
+
+    // const clothMtlLoader = new MTLLoader();
+    // clothMtlLoader.load('public/models/cloth/cloth_on_ground.mtl', (mtl) => {
+    //   mtl.preload();
+
+    //   const clothLoader = new OBJLoader();
+    //   clothLoader.setMaterials(mtl);
+    //   clothLoader.load('public/models/cloth/cloth_on_ground.obj', (cloth) => {
+    //     cloth.traverse((child) => {
+    //       if (child instanceof THREE.Mesh) {
+    //         cloth = child;
+    //         cloth.rotation.x = Math.PI / 2;
+    //         cloth.scale.set(1.8, 1.8, 1.8);
+    //         // cloth.position.set(90, 75, 0);
+    //         cloth.castShadow = true;
+    //         cloth.receiveShadow = true;
+    //       }
+    //     });
+    //     ground.add(cloth);
+    //     objects.push(cloth);
+    //   });
+    // });
 
     //DRAG
 
